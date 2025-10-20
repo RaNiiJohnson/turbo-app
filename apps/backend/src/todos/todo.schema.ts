@@ -6,6 +6,7 @@ export const todoSchema = z.object({
   description: z.string(),
   createdAt: z.string(),
   dueDate: z.string().optional(),
+  completed: z.boolean().optional(),
   priority: z.enum(['low', 'medium', 'high']).optional(),
 });
 

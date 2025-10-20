@@ -12,6 +12,7 @@ const appRouter = t.router({
       description: z.string(),
       createdAt: z.string(),
       dueDate: z.string().optional(),
+      completed: z.boolean().optional(),
       priority: z.enum(['low', 'medium', 'high']).optional(),
     })).query(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any),
     getAllTodos: publicProcedure.output(z.array(z.object({
@@ -20,6 +21,7 @@ const appRouter = t.router({
       description: z.string(),
       createdAt: z.string(),
       dueDate: z.string().optional(),
+      completed: z.boolean().optional(),
       priority: z.enum(['low', 'medium', 'high']).optional(),
     }))).query(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any),
     createTodo: publicProcedure.input(z.object({
@@ -28,6 +30,7 @@ const appRouter = t.router({
       description: z.string(),
       createdAt: z.string(),
       dueDate: z.string().optional(),
+      completed: z.boolean().optional(),
       priority: z.enum(['low', 'medium', 'high']).optional(),
     }).omit({
       id: true,
@@ -38,6 +41,7 @@ const appRouter = t.router({
       description: z.string(),
       createdAt: z.string(),
       dueDate: z.string().optional(),
+      completed: z.boolean().optional(),
       priority: z.enum(['low', 'medium', 'high']).optional(),
     })).mutation(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any),
     updateTodo: publicProcedure.input(z.object({
@@ -48,6 +52,7 @@ const appRouter = t.router({
         description: z.string(),
         createdAt: z.string(),
         dueDate: z.string().optional(),
+        completed: z.boolean().optional(),
         priority: z.enum(['low', 'medium', 'high']).optional(),
       }).omit({
         id: true,
@@ -55,7 +60,7 @@ const appRouter = t.router({
       }).partial(),
     })).mutation(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any),
     deleteTodo: publicProcedure.input(z.object({
-      id: z.object(),
+      id: z.string(),
     })).output(z.boolean()).mutation(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any)
   })
 });

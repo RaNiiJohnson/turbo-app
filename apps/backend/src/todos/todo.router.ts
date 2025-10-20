@@ -46,7 +46,7 @@ export class TodoRouter {
 
   @Mutation({
     input: z.object({
-      id: z.object(),
+      id: z.string(),
     }),
     output: z.boolean(),
   })
